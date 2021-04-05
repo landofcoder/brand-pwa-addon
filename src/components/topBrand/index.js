@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from '@magento/venia-drivers';
 import Slider from "react-slick";
 import styles from './topBrand.css';
@@ -42,7 +42,6 @@ const TopBrands = () => {
         slidesToShow: brandConfiguration && brandConfiguration.Brand && brandConfiguration.Brand.brand_block_large_items ? parseInt(brandConfiguration.Brand.brand_block_large_items) : 6,
         slidesToScroll: 1,
         arrows: true,
-        centerMode: true,
         centerPadding: "60px",
         autoplay: brandConfiguration && brandConfiguration.Brand && brandConfiguration.Brand.brand_block_autoplay ? brandConfiguration.Brand.brand_block_autoplay : true,
         speed: brandConfiguration && brandConfiguration.Brand && brandConfiguration.Brand.brand_block_interval ? parseInt(brandConfiguration.Brand.brand_block_interval) : 3000,

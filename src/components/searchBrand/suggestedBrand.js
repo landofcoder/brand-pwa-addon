@@ -31,12 +31,6 @@ const SuggestedBrand = props => {
             <div>
                 <p className={classes.meta_description}>{meta_description}</p>
             </div>
-            {/*<span className={classes.price}>*/}
-            {/*    <Price*/}
-            {/*        currencyCode={price.regularPrice.amount.currency}*/}
-            {/*        value={price.regularPrice.amount.value}*/}
-            {/*    />*/}
-            {/*</span>*/}
         </Link>
     );
 };

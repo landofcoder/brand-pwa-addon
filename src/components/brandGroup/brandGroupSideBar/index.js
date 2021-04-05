@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import { useListAllBrandGroup } from "../../../hooks/useListAllBrandGroup";
 import LoadingIndicator from "@magento/venia-ui/lib/components/LoadingIndicator";
 import classes from './brandGroupSideBar.css';

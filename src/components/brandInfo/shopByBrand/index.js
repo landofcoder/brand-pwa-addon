@@ -2,11 +2,7 @@ import React from 'react';
 import { useShopByBrand } from "../../../hooks/useShopByBrand";
 import LoadingIndicator from "@magento/venia-ui/lib/components/LoadingIndicator";
 import classes from './shopByBrand.css';
-import { Link } from '@magento/venia-drivers';
-import Icon from "@magento/venia-ui/lib/components/Icon";
-import { Search as SearchIc } from 'react-feather';
-
-const searchIcon = <Icon src={SearchIc} attrs={{ width: 16 }} />;
+import { Link } from '@magento/venia-drivers';;
 
 const ShopByBrand = props => {
     const { listBrandData, listBrandError, listBrandLoading } = useShopByBrand();

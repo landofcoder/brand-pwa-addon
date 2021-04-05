@@ -14,10 +14,8 @@ import NoProductsFound from "@magento/venia-ui/lib/RootComponents/Category/NoPro
 import FilterModal from "@magento/venia-ui/lib/components/FilterModal";
 import SearchBrandBar from "../../searchBrand";
 import ShopByBrand from "../shopByBrand";
-import classes from "../../brandGroup/brandGroup.css";
 import BrandGroupSideBar from "../../brandGroup/brandGroupSideBar";
 
-// const FilterModal = React.lazy(() => import('../../components/FilterModal'));
 
 const ProductsBrandContent = props => {
     const { brandId, data, pageControl, sortProps, pageSize } = props;
@@ -79,9 +77,6 @@ const ProductsBrandContent = props => {
             </div>
         ) : null;
 
-    // If you want to defer the loading of the FilterModal until user interaction
-    // (hover, focus, click), simply add the talon's `loadFilters` prop as
-    // part of the conditional here.
     const modal = filters ? <FilterModal filters={filters} /> : null;
 
     const brandDescriptionElement = brandDescription ? (
@@ -152,9 +147,6 @@ ProductsBrandContent.propTypes = {
         root: string,
         title: string
     }),
-    // sortProps contains the following structure:
-    // [{sortDirection: string, sortAttribute: string, sortText: string},
-    // React.Dispatch<React.SetStateAction<{sortDirection: string, sortAttribute: string, sortText: string}]
     sortProps: array,
     pageSize: number
 };

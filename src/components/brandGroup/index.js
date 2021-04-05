@@ -1,12 +1,9 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import { useListBrandGroup} from "../../hooks/useListBrandGroup";
 import LoadingIndicator from "@magento/venia-ui/lib/components/LoadingIndicator";
 import { Title} from "@magento/venia-ui/lib/components/Head";
-import BreadCrumb from '../breadcrumb/index';
 import classes from './brandGroup.css';
 import { Link } from '@magento/venia-drivers';
-import Icon from "@magento/venia-ui/lib/components/Icon";
-import { Search as SearchIc } from 'react-feather';
 import SearchBrandBar from "../searchBrand";
 import ShopByBrand from "../brandInfo/shopByBrand";
 import BrandGroupSideBar from "./brandGroupSideBar";
@@ -15,15 +12,13 @@ import { Util } from '@magento/peregrine';
 const { BrowserPersistence } = Util;
 const storage = new BrowserPersistence();
 
-const searchIcon = <Icon src={SearchIc} attrs={{ width: 16 }} />;
-
 const BrandGroup = props => {
     const brandConfiguration = storage.getItem('BrandConfiguration');
-    const group_page_item_per_page = brandConfiguration.Brand.group_page_item_per_page;
-    const group_page_show_brand_name = brandConfiguration.Brand.group_page_show_brand_name;
-    const brand_list_page_page_title = brandConfiguration.Brand.brand_list_page_page_title;
-    const general_settings_enable_search = brandConfiguration.Brand.general_settings_enable_search;
-    const general_settings_enable_menu = brandConfiguration.Brand.general_settings_enable_menu;
+    const group_page_item_per_page = brandConfiguration && brandConfiguration.Brand && brandConfiguration.Brand.group_page_item_per_page ? brandConfiguration.Brand.group_page_item_per_page : 12;
+    const group_page_show_brand_name = brandConfiguration && brandConfiguration.Brand && brandConfiguration.Brand.group_page_show_brand_name ? brandConfiguration.Brand.group_page_show_brand_name : false;
+    const brand_list_page_page_title = brandConfiguration && brandConfiguration.Brand && brandConfiguration.Brand.brand_list_page_page_title ? brandConfiguration.Brand.brand_list_page_page_title : "All Brands";
+    const general_settings_enable_search = brandConfiguration && brandConfiguration.Brand && brandConfiguration.Brand.general_settings_enable_search ? brandConfiguration.Brand.general_settings_enable_search : true;
+    const general_settings_enable_menu = brandConfiguration && brandConfiguration.Brand && brandConfiguration.Brand.general_settings_enable_menu ? brandConfiguration.Brand.general_settings_enable_menu : true;
     const { brandGroupUrl } = useParams();
     const { listBrandGroupData, listBrandGroupError, listBrandGroupLoading } = useListBrandGroup({ brandGroupUrl, group_page_item_per_page });
     let brandGroup = null;
@@ -50,7 +45,7 @@ const BrandGroup = props => {
                 <span className={classes.breadCrumbSeparator}>{`/`}</span>
                 <span className={classes.breadCrumbText}>{`Brands Group`}</span>
                 <span className={classes.breadCrumbSeparator}>{`/`}</span>
-                <Link className={classes.breadCrumbLink} to="/brands.html">{brand_list_page_page_title ? brand_list_page_page_title : `All Brands`}</Link>
+                <Link className={classes.breadCrumbLink} to="/brands.html">{brand_list_page_page_title}</Link>
                 <span className={classes.breadCrumbSeparator}>{`/`}</span>
                 <span className={classes.breadCrumbText}>{brandGroup.name}</span>
             </div>

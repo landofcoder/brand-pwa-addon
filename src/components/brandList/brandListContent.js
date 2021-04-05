@@ -1,10 +1,8 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import LoadingIndicator from "@magento/venia-ui/lib/components/LoadingIndicator";
 import { Title} from "@magento/venia-ui/lib/components/Head";
 import classes from './page.css';
 import { Link } from '@magento/venia-drivers';
-import Icon from "@magento/venia-ui/lib/components/Icon";
-import { Search as SearchIc } from 'react-feather';
 import SearchBrandBar from "../searchBrand";
 import ShopByBrand from "../brandInfo/shopByBrand";
 import BrandGroupSideBar from "../brandGroup/brandGroupSideBar";
@@ -14,15 +12,13 @@ import RichContent from "@magento/venia-ui/lib/components/RichContent";
 const { BrowserPersistence } = Util;
 const storage = new BrowserPersistence();
 
-const searchIcon = <Icon src={SearchIc} attrs={{ width: 16 }} />;
-
 const BrandListContent = props => {
     const brandConfiguration = storage.getItem('BrandConfiguration');
-    const brand_list_page_layout = brandConfiguration.Brand.brand_list_page_layout;
-    const brand_list_page_show_brand_name = brandConfiguration.Brand.brand_list_page_show_brand_name;
-    const brand_list_page_page_title = brandConfiguration.Brand.brand_list_page_page_title;
-    const general_settings_enable_search = brandConfiguration.Brand.general_settings_enable_search;
-    const general_settings_enable_menu = brandConfiguration.Brand.general_settings_enable_menu;
+    const brand_list_page_layout = brandConfiguration && brandConfiguration.Brand && brandConfiguration.Brand.brand_list_page_layout ? brandConfiguration.Brand.brand_list_page_layout : "list";
+    const brand_list_page_show_brand_name = brandConfiguration && brandConfiguration.Brand && brandConfiguration.Brand.brand_list_page_show_brand_name ? brandConfiguration.Brand.brand_list_page_show_brand_name : true;
+    const brand_list_page_page_title = brandConfiguration && brandConfiguration.Brand && brandConfiguration.Brand.brand_list_page_page_title ? brandConfiguration.Brand.brand_list_page_page_title : "All Brands";
+    const general_settings_enable_search = brandConfiguration && brandConfiguration.Brand && brandConfiguration.Brand.general_settings_enable_search ? brandConfiguration.Brand.general_settings_enable_search : true;
+    const general_settings_enable_menu = brandConfiguration && brandConfiguration.Brand && brandConfiguration.Brand.general_settings_enable_menu ? brandConfiguration.Brand.general_settings_enable_menu : true;
     const { listBrandsData, error, loading, pageControl } = props;
 
     if (error) {
@@ -78,7 +74,7 @@ const BrandListContent = props => {
                         <span>{`Brand List`}</span>
                     </div>
                     {
-                        !brand_list_page_layout === "list" ?
+                        brand_list_page_layout === "list" ?
                             <div>
                                 {listBrandsData.lofBrandList.items.map(
                                     (brand, index) => {

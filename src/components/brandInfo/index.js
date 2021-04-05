@@ -4,11 +4,16 @@ import { useBrandInfo } from '../../hooks/useBrandInfo';
 import LoadingIndicator from "@magento/venia-ui/lib/components/LoadingIndicator";
 import defaultClasses from './brandInfo.css';
 import { Link } from "@magento/venia-concept/src/drivers";
-import {Title} from "@magento/venia-ui/lib/components/Head";
-import {mergeClasses} from "../../classify";
+import { Title } from "@magento/venia-ui/lib/components/Head";
+import { mergeClasses } from "../../classify";
 import ProductsBrand from "./productsBrand";
+import { Util } from '@magento/peregrine';
+const { BrowserPersistence } = Util;
+const storage = new BrowserPersistence();
 
 const BrandInfo = props => {
+    const brandConfiguration = storage.getItem('BrandConfiguration');
+    const brand_list_page_page_title = brandConfiguration && brandConfiguration.Brand && brandConfiguration.Brand.brand_list_page_page_title ? brandConfiguration.Brand.brand_list_page_page_title : "All Brands"
     const { brandUrl } = useParams();
     const { brandData, brandError, brandLoading } = useBrandInfo({ brandUrl });
 
@@ -37,7 +42,7 @@ const BrandInfo = props => {
             <div className={classes.breadCrumb}>
                 <Link className={classes.breadCrumbLink} to="/">{`Home`}</Link>
                 <span className={classes.breadCrumbSeparator}>{`/`}</span>
-                <Link className={classes.breadCrumbLink} to="/brands.html">{`Brands`}</Link>
+                <Link className={classes.breadCrumbLink} to="/brands.html">{brand_list_page_page_title}</Link>
                 <span className={classes.breadCrumbSeparator}>{`/`}</span>
                 <span className={classes.breadCrumbText}>{brand.name}</span>
             </div>

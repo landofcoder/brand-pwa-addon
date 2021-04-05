@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useLazyQuery, useQuery } from '@apollo/client';
-
 import mergeOperations from "@magento/peregrine/lib/util/shallowMerge";
 import { useAppContext } from "@magento/peregrine/lib/context/app";
 import { usePagination, useSort } from "@magento/peregrine";

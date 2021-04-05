@@ -1,9 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
-
 import mergeOperations from "@magento/peregrine/lib/util/shallowMerge"
 import { useAppContext } from "@magento/peregrine/lib/context/app";
-
 import DEFAULT_OPERATIONS from './brandContent.gql';
 
 const DRAWER_NAME = 'filter';

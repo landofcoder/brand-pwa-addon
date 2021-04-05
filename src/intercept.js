@@ -29,7 +29,7 @@ module.exports = targets => {
 
     targets.of('@magento/venia-ui').routes.tap(routes => {
         routes.push({
-            name: 'Page',
+            name: 'All Brands',
             pattern: '/brands.html',
             path: require.resolve('./components/brandList/index.js')
         });
