@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useBrandInfo } from '../../hooks/useBrandInfo';
 import LoadingIndicator from "@magento/venia-ui/lib/components/LoadingIndicator";
 import defaultClasses from './brandInfo.css';
-import { Link } from "@magento/venia-concept/src/drivers";
+import { Link } from '@magento/venia-drivers';
 import { Title } from "@magento/venia-ui/lib/components/Head";
 import { mergeClasses } from "../../classify";
 import ProductsBrand from "./productsBrand";
